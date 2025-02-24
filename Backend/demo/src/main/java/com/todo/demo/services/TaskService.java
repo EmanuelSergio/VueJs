@@ -11,10 +11,8 @@ public class TaskService {
     @Autowired
     private TaskRepository repository;
 
-    public List<Task> create(Task task){
-        System.out.println(task.getTitle());
+    public void create(Task task){
         repository.save(task);
-        return getAll();
     }
 
     public Task getById(Integer id) {
@@ -25,15 +23,14 @@ public class TaskService {
         return repository.findAll();
     }
 
-    public List<Task> update(Task task){
+    public void update(Task task){
         repository.save(task);
-        return getAll();
     }
-    public Task delete(Integer id){
+    public void delete(Integer id){
         Task task = repository.findById(id).orElse(null);
         if (task != null) {
             repository.deleteById(id);
         }
-        return task;
     }
+    
 }
