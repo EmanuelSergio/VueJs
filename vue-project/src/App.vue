@@ -1,8 +1,8 @@
 <template>
   <v-app>
-    <AppHeader />
+    <AppHeader @toggle-sidebar="drawer = !drawer" />
     <div class="layout-content">
-      <AppSidebar />
+      <AppSidebar :drawer="drawer" @update:drawer="drawer = $event" />
       <v-main>
         <router-view></router-view>
       </v-main>
@@ -22,6 +22,11 @@ export default {
     AppHeader,
     AppSidebar,
     AppFooter,
+  },
+  data() {
+    return {
+      drawer: false,
+    };
   },
 };
 </script>
