@@ -4,9 +4,7 @@
     <div class="layout-content">
       <AppSidebar />
       <v-main>
-        <v-container fluid>
-          <router-view />
-        </v-container>
+        <router-view></router-view>
       </v-main>
     </div>
     <AppFooter />
@@ -22,6 +20,7 @@ export default {
   name: "App",
   components: {
     AppHeader,
+    AppSidebar,
     AppFooter,
   },
 };
