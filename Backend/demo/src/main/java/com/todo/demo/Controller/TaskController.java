@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.todo.demo.entities.Task;
 import com.todo.demo.services.TaskService;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 
-@Controller
+@RestController
 @RequestMapping("/task")
 public class TaskController {
 
@@ -34,18 +35,17 @@ public class TaskController {
     }
 
     @PostMapping("")
-    public List<Task> create(@RequestBody Task task) {
-        System.out.println("batewu");
-        return taskService.create(task);
+    public void create(@RequestBody Task task) {
+        taskService.create(task);
     }
     
     @PutMapping("")
-    public List<Task> update(@RequestBody Task task) {      
-        return taskService.update(task);
+    public void update(@RequestBody Task task) {      
+        taskService.update(task);
     }
 
     @DeleteMapping("/{id}")
-    public Task delete(@PathVariable Integer id){
-        return taskService.delete(id);
+    public void delete(@PathVariable Integer id){
+        taskService.delete(id);
     }
 }
