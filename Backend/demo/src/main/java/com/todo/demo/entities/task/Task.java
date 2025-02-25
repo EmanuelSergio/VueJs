@@ -1,7 +1,6 @@
-package com.todo.demo.entities;
+package com.todo.demo.entities.task;
 
-import java.sql.Date;
-
+import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,7 +26,7 @@ public class Task {
     @Column(name = "description")
     private String description;
     @Column(name = "startedDate")
-    private Date startedDate;
+    private LocalDateTime startedDate;
     @Column(name = "finishedDate")
-    private Date finishedDate;
+    private LocalDateTime finishedDate;
 }
