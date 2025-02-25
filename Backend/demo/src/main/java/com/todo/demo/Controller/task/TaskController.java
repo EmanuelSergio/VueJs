@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.todo.demo.dto.task.CreateTaskDto;
 import com.todo.demo.dto.task.UpdateTaskDto;
 import com.todo.demo.entities.task.Task;
-import com.todo.demo.services.TaskService;
+import com.todo.demo.services.task.TaskService;
+
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

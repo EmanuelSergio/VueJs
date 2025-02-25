@@ -8,6 +8,13 @@
 <script>
 export default {
   name: "AppHeader",
+  methods: {
+    toggleSidebar() {
+      console.log("header toggle");
+
+      this.$emit("toggle-sidebar");
+    },
+  },
 };
 </script>
 

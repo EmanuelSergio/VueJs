@@ -1,4 +1,4 @@
-package com.todo.demo.services;
+package com.todo.demo.services.task;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -57,24 +57,27 @@ public class TaskService {
 
     public void startTask(Integer id) {
         Task task = getById(id);
-
-        if (task.getFinishedDate() == null) {
-            task.setStartedDate(LocalDateTime.now());
-            task.setStatus(true);
-            UpdateTaskDto dto = new UpdateTaskDto();
-            BeanUtils.copyProperties(task, dto);
-            update(id, dto);
+        if (task != null) {
+            if (task.getFinishedDate() == null) {
+                task.setStartedDate(LocalDateTime.now());
+                task.setStatus(true);
+                UpdateTaskDto dto = new UpdateTaskDto();
+                BeanUtils.copyProperties(task, dto);
+                update(id, dto);
+            }
         }
     }
 
     public void finishTask(Integer id) {
         Task task = getById(id);
-        if (task.getStartedDate() != null) {
-            task.setFinishedDate(LocalDateTime.now());
-            task.setStatus(false);
-            UpdateTaskDto dto = new UpdateTaskDto();
-            BeanUtils.copyProperties(task, dto);
-            update(id, dto);
+        if (task != null) {
+            if (task.getStartedDate() != null) {
+                task.setFinishedDate(LocalDateTime.now());
+                task.setStatus(false);
+                UpdateTaskDto dto = new UpdateTaskDto();
+                BeanUtils.copyProperties(task, dto);
+                update(id, dto);
+            }
         }
     }
 }
