@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <v-card class="card">
+  <div class="container">
+    <v-card v-for="(task, index) in tasks" :key="index" class="card">
       <v-checkbox class="checkbox" v-model="value" value="value"> </v-checkbox>
-      <v-card-title primary-title> Comprar ração pro gato </v-card-title>
+      <v-card-title primary-title>{{ task.text }}</v-card-title>
     </v-card>
   </div>
 </template>
@@ -11,7 +11,10 @@
 export default {
   name: "DailyTask",
   data: () => ({
-    items: [{ text: "Comprar ração para o gato" }],
+    tasks: [
+      { text: "Comprar ração para o gato" },
+      { text: "Comprar ração para o gato" },
+    ],
   }),
 };
 </script>
@@ -23,6 +26,11 @@ export default {
   align-items: center;
   border-radius: 24px;
   width: 27rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
 }
 
 .checkbox {
