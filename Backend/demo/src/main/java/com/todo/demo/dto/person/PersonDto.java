@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CreatePersonDto {
+public class PersonDto {
+    @NotNull
+    private Integer id;
     @NotNull
     private String name;
     @NotNull

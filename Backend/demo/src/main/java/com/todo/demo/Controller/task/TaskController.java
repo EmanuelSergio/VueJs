@@ -2,23 +2,15 @@ package com.todo.demo.Controller.task;
 
 import java.util.List;
 
+import com.todo.demo.dto.task.UpdateTaskDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.todo.demo.dto.task.CreateTaskDto;
-import com.todo.demo.dto.task.UpdateTaskDto;
-import com.todo.demo.entities.task.Task;
+import com.todo.demo.dto.task.ResponseTaskDto;
 import com.todo.demo.services.task.TaskService;
 
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/task")
@@ -27,38 +19,38 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    @GetMapping("/all")
-    public List<Task> getAll() {
-        return taskService.getAll();
+    @GetMapping("/{personId}/all")
+    public List<ResponseTaskDto> getAll(@PathVariable("personId") Integer personId) {
+        return taskService.getAll(personId);
     }
 
-    @GetMapping("/{id}")
-    public Task getById(@PathVariable Integer id) {
-        return taskService.getById(id);
+    @GetMapping("/{personId}/{id}")
+    public ResponseTaskDto getById(@PathVariable Integer personId,@PathVariable Integer id) {
+        return taskService.getById(personId, id);
     }
 
-    @PostMapping("")
-    public void create(@Valid @RequestBody CreateTaskDto task) {
-        taskService.create(task);
+    @PostMapping("/{personId}")
+    public void create(@PathVariable Integer personId, @Valid @RequestBody CreateTaskDto task) {
+        taskService.create(personId, task);
     }
 
-    @PatchMapping("/{id}")
-    public void update(@PathVariable Integer id, @RequestBody @Valid UpdateTaskDto data) {
-        taskService.update(id, data);
+    @PatchMapping("/{personId}/{id}")
+    public void update(@PathVariable Integer personId,@PathVariable Integer id, @RequestBody @Valid UpdateTaskDto data) {
+        taskService.update(personId, id, data);
     }
 
-    @PutMapping("/start/{id}")
-    public void startTask(@PathVariable Integer id) {
-        taskService.startTask(id);
+    @PutMapping("/start/{personId}/{id}")
+    public void startTask(@PathVariable Integer personId, @PathVariable Integer id) {
+        taskService.startTask(personId, id);
     }
 
-    @PutMapping("/finish/{id}")
-    public void finishTask(@PathVariable Integer id) {
-        taskService.finishTask(id);
+    @PutMapping("/finish/{personId}/{id}")
+    public void finishTask(@PathVariable Integer personId, @PathVariable Integer id) {
+        taskService.finishTask(personId, id);
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
-        taskService.delete(id);
+    @DeleteMapping("/{personId}/{id}")
+    public void delete(@PathVariable Integer personId, @PathVariable Integer id) {
+        taskService.delete(personId, id);
     }
 }

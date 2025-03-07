@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.todo.demo.dto.person.CreatePersonDto;
+import com.todo.demo.dto.person.ResponsePersonDto;
 import com.todo.demo.dto.person.UpdatePersonDto;
-import com.todo.demo.entities.person.Person;
 import com.todo.demo.services.person.PersonService;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -26,13 +25,13 @@ public class PersonController {
     private PersonService service;
 
     @GetMapping("/all")
-    public List<Person> getAll() {
+    public List<ResponsePersonDto> getAll() {
         return this.service.getAll();
     }
 
     @GetMapping("/{id}")
-    public Person getById(@PathVariable Integer id) {
-        return this.service.getById(id);
+    public ResponsePersonDto getById(@PathVariable Integer id) {
+        return this.service.getById(id, ResponsePersonDto.class);
     }
 
     @PostMapping()

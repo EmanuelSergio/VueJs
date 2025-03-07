@@ -1,11 +1,10 @@
 package com.todo.demo.entities.task;
 
 import java.time.LocalDateTime;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
+import com.todo.demo.entities.person.Person;
+
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +16,6 @@ import lombok.NoArgsConstructor;
 public class Task {
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
     private Integer id;
     @Column(name = "status")
     private Boolean status;
@@ -29,4 +27,7 @@ public class Task {
     private LocalDateTime startedDate;
     @Column(name = "finishedDate")
     private LocalDateTime finishedDate;
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
 }
