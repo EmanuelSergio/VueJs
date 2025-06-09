@@ -1,9 +1,6 @@
 # 📝 Todo List Application
 
 Um aplicativo full-stack de lista de tarefas, com frontend em Vue.js e backend em Spring Boot, projetado para ajudar você a gerenciar suas tarefas diárias de forma simples e eficiente.
-
-![Todo List App](https://via.placeholder.com/800x400?text=Todo+List+App)
-
 ---
 
 ## 📋 Índice
@@ -102,7 +99,7 @@ Backend/demo/
 ### Backend
 
 ```bash
-git clone https://github.com/seu-usuario/todo-list-app.git
+git clone https://github.com/EmanuelSergio/VueJs.git
 cd todo-list-app/Backend/demo
 docker-compose up -d  # ou configure seu PostgreSQL manualmente
 ./mvnw spring-boot:run  # ou mvnw.cmd no Windows
@@ -192,22 +189,6 @@ npm run dev
 | started\_date  | TIMESTAMP |
 | finished\_date | TIMESTAMP |
 | person\_id     | INT (FK)  |
-
----
-
-## 📸 Screenshots
-
-### Tela Inicial
-
-![Home](https://via.placeholder.com/400x200?text=Home)
-
-### Lista de Tarefas
-
-![Task List](https://via.placeholder.com/400x200?text=Task+List)
-
-### Criação de Tarefa
-
-![Create Task](https://via.placeholder.com/400x200?text=Create+Task)
 
 ---
 
